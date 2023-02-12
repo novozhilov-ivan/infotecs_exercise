@@ -4,47 +4,47 @@
 Данные взять из географической базы данных GeoNames, по [ссылке](http://download.geonames.org/export/dump/RU.zip).
 [Описание](http://download.geonames.org/export/dump/readme.txt) формата данных.
 
-## Метод принимает идентификатор geonameid и возвращает информацию о городе
-`GET api/cities/geonameid` вернёт информацию о городе.
+## Метод принимает идентификатор geonameid и возвращает информацию о городе.
+`GET api/cities` вернёт информацию о городе.
 ### Пример запроса
 `GET api/cities/569999`
 ### Ответ
 Успешный ответ приходит с кодом `200 OK` и содержит тело:
 ```json
 {
-  "message": null,
-  "data": {
-    "geo_name_id": 569999,
-    "name": "Chandar",
-    "ascii_name": "Chandar",
-    "alternate_names": [
-      "Chandar",
-      "Tsjandar",
-      "Чандар"
-    ],
-    "latitude": 55.29917,
-    "longitude": 56.71417,
-    "feature_class": "P",
-    "feature_code": "PPL",
-    "country_code": "RU",
-    "cc2": null,
-    "admin1_code": "08",
-    "admin2_code": null,
-    "admin3_code": null,
-    "admin4_code": null,
-    "population": 0,
-    "elevation": null,
-    "dem": 105,
-    "timezone": "Asia/Yekaterinburg",
-    "modification_date": "2012-01-17"
-  }
+     "message": null,
+     "data": {
+          "geo_name_id": 569999,
+          "name": "Chandar",
+          "ascii_name": "Chandar",
+          "alternate_names": [
+               "Chandar",
+               "Tsjandar",
+               "Чандар"
+          ],
+          "latitude": 55.29917,
+          "longitude": 56.71417,
+          "feature_class": "P",
+          "feature_code": "PPL",
+          "country_code": "RU",
+          "cc2": null,
+          "admin1_code": "08",
+          "admin2_code": null,
+          "admin3_code": null,
+          "admin4_code": null,
+          "population": 0,
+          "elevation": null,
+          "dem": 105,
+          "timezone": "Asia/Yekaterinburg",
+          "modification_date": "2012-01-17"
+     }
 }
 ```
 
 
-## Метод принимает страницу и количество отображаемых на странице городов и возвращает список городов с их информацией
+## Метод принимает страницу и количество отображаемых на странице городов и возвращает список городов с их информацией.
 `GET api/cities` возвращает список городов с их информацией.
-Параметры:
+### Параметры:
 * `page` – номер страницы
 * `rows` – количество результатов на странице
 ### Пример запроса
@@ -125,7 +125,7 @@
 
 
 ## Метод принимает названия двух городов (на русском языке) и получает информацию о найденных городах, а также какой из них расположен севернее и одинаковая ли у них временная зона и на сколько часов они различаются.
-###### (Когда несколько городов имеют одно и то же название, разрешать неоднозначность выбирая город с большим населением; если население совпадает, брать первый попавшийся)
+###### Когда несколько городов имеют одно и то же название, разрешать неоднозначность выбирая город с большим населением; если население совпадает, брать первый попавшийся.
 `GET api/v1/cities`
 ### Пример запроса
 `GET /api/cities/молчаново&москва`
@@ -204,7 +204,7 @@
 
 
 ## Метод принимает часть названия города и возвращает подсказку с возможными вариантами продолжений.
-`GET /api/cities/search/part_city_name`
+`GET /api/cities/search`
 ### Пример запроса
 `GET api/cities/search/toms`
 ### Ответ
@@ -212,43 +212,35 @@
 ```json
 {
      "message": null,
-     "number_of_cities_found": 35,
+     "number_of_cities_found": 27,
      "data": [
+          "Tomsk",
+          "Tomsha",
+          "Tomsyu",
           "Tomsino",
+          "Tomskiy",
+          "Tomskaya",
+          "Tomskoye",
           "Tomsharovo",
+          "Tomsk Oblast",
+          "Ozero Tomsino",
+          "Gora Tomskaya",
+          "Tomskiy Rayon",
+          "Ostrov Tomskiy",
+          "Tomskiy Khutor",
+          "Ozero Tomskoye",
+          "Tomskaya Tamozhnya",
+          "Duma Goroda Tomska",
+          "Urochishche Tomshina",
+          "Meriya Goroda Tomska",
+          "Tomskiy Oblastnoy Sud",
+          "Ozero Maloye Tomskoye",
           "Stantsiya Tomsk Vtoroy",
           "Stantsiya Tomsk Pervyy",
-          "Tomskoye",
-          "Tomskiy Rayon",
-          "Tomskiy Khutor",
-          "Tomsk Oblast",
-          "Tomskaya",
-          "Tomskaya",
-          "Tomskaya",
-          "Tomsk",
-          "Ozero Bol’shoye Tomskoye",
-          "Ozero Maloye Tomskoye",
-          "Tomskiy",
-          "Tomskoye",
-          "Tomskoye",
-          "Tomsyu",
-          "Ostrov Tomskiy",
-          "Tomsha",
-          "Tomsko-Obskaya Lesnaya Dacha",
-          "Ozero Tomskoye",
-          "Urochishche Tomshina",
-          "Tomsino",
-          "Ozero Tomsino",
-          "Tomsha",
-          "Tomskiy",
           "Tomsk Bogashevo Airport",
-          "Gora Tomskaya",
+          "Ozero Bol’shoye Tomskoye",
           "Stantsiya Tomsk-Severnyy",
-          "Meriya Goroda Tomska",
-          "Duma Goroda Tomska",
-          "Tomskaya Tamozhnya",
-          "Tomskiy Oblastnoy Sud",
-          "Tomsk"
+          "Tomsko-Obskaya Lesnaya Dacha"
      ]
 }
 ```
